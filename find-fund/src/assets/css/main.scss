@@ -1,0 +1,7 @@
+@import "theme";
+@mixin text($color){
+  color: $color;
+}
+p{
+  @include text($fund-color)
+}
