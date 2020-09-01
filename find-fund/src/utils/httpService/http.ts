@@ -7,17 +7,24 @@ const http = intercepotor()
 async function mGet(url: string, param: any, isShowLoading = true) {
     return new Promise((resolve, reject) => {
         initParams(param, isShowLoading).then((paramMap) => {
-            http.get(url, paramMap).then(data => {
-                console.log('mget对了', data)
+            http.get(url, {params:paramMap}).then(data => {
                 resolve(data)
             }).catch(data => {
-                console.log('mget错了')
                 reject(data)
             })
         })
     })
 }
 
+async function Get(url: string, param: any) {
+    return new Promise((resolve, reject) => {
+            http.get(url, {params:param}).then(data => {
+                resolve(data.data)
+            }).catch(data => {
+                reject(data)
+            })
+    })
+}
 async function mPost(url: string, param: any, isShowLoading: boolean | undefined) {
     return new Promise((resolve, reject) => {
         initParams(param, isShowLoading).then((paramMap) => {
@@ -27,6 +34,17 @@ async function mPost(url: string, param: any, isShowLoading: boolean | undefined
                 reject(data)
             })
         })
+    })
+}
+
+async function Post(url: string, param: any) {
+    return new Promise((resolve, reject) => {
+            http.post(url, param).then(data => {
+                resolve(data)
+            }).catch(data => {
+                reject(data)
+            })
+
     })
 }
 
@@ -59,5 +77,5 @@ const showLoading = () => {
     }, 3000)
 }
 
-export {mGet, mPost}
+export {mGet, mPost,Post,Get}
 

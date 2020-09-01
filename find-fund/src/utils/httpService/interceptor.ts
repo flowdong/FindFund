@@ -46,6 +46,7 @@ service.interceptors.response.use(
 
 function complementUrl(config: AxiosRequestConfig) {
     let baseUrl = config.url
+
     baseUrl = Constant.IS_DEBUG ? '/api/' + baseUrl : baseUrl
     /*  if (!baseUrl.startsWith('http')) {
         let serverUrl = Constant.IS_DEBUG ? Constant.HTTP_URL_DEBUG : Constant.HTTP_URL_PROD
