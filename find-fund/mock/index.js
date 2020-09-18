@@ -18,6 +18,6 @@ const login = Mock.mock({
   }
 })
 
-Mock.mock('/api/home', 'get', home)
-Mock.mock('/api/login', 'post', login)
+Mock.mock('/home', 'get', home)
+Mock.mock('/login', 'post', login)
 export default Mock
